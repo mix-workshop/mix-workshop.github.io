@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIX Workshop - Multisensory Interactions in Extended Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        /* RGB Color Mixing Background */
+        .rgb-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 40%, rgba(0, 255, 0, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(0, 0, 255, 0.3) 0%, transparent 50%);
+            animation: rgbShift 8s ease-in-out infinite;
+        }
+
+        @keyframes rgbShift {
+            0%, 100% {
+                background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 40%, rgba(0, 255, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 80%, rgba(0, 0, 255, 0.3) 0%, transparent 50%);
+            }
+            33% {
+                background: radial-gradient(circle at 60% 70%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 30% 20%, rgba(0, 255, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 60%, rgba(0, 0, 255, 0.3) 0%, transparent 50%);
+            }
+            66% {
+                background: radial-gradient(circle at 70% 20%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 50% 30%, rgba(0, 0, 255, 0.3) 0%, transparent 50%);
+            }
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .nav-container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #666;
+        }
+
+        /* Full Page Title */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to right, rgba(240, 240, 240, 0.9), rgba(220, 235, 255, 0.9));
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero .location {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .submit-btn {
+            background: #333;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: #555;
+        }
+
+        /* Main Content */
+        main {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding-top: 2rem;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+            font-weight: 400;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .paper-link {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .paper-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 400;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Topics List */
+        .topics-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .topics-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .topics-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Agenda Table */
+        .agenda-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .agenda-table th,
+        .agenda-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-weight: 400;
+        }
+
+        .agenda-table th {
+            background: #f8f8f8;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .agenda-table tr:hover {
+            background: #fafafa;
+        }
+
+        .agenda-table .break-row {
+            background: #f5f5f5;
+        }
+
+        .agenda-table .break-row:hover {
+            background: #f0f0f0;
+        }
+
+        /* Organizers Grid */
+        .organizers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .organizer-card {
+            text-align: center;
+        }
+
+        .organizer-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        .organizer-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .organizer-image {
+            width: 80px;
+            height: 80px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .organizer-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .organizer-affiliation {
+            color: #666;
+            font-size: 0.85rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .nav-container {
+                width: 90%;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .agenda-table {
+                font-size: 0.9rem;
+            }
+
+            .agenda-table th,
+            .agenda-table td {
+                padding: 0.7rem;
+            }
+
+            .organizers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .organizer-link {
+                padding: 1rem;
+            }
+
+            .organizer-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            .organizer-name {
+                font-size: 0.9rem;
+            }
+
+            .organizer-affiliation {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .organizers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rgb-background"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <a href="#call" class="nav-link">Call for Participation</a>
+            <a href="#submissions" class="nav-link">Submissions</a>
+            <a href="#agenda" class="nav-link">Agenda</a>
+            <a href="#organizers" class="nav-link">Organizers</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1>MIX Workshop</h1>
+            <p class="subtitle">1st International Workshop on Multisensory Interactions in Extended Reality</p>
+            <p class="location">ISMAR 2025 • Daejeon, South Korea • October 8th, 2025</p>
+            <a href="#" class="submit-btn">Submit Now</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <!-- Featured Papers Section -->
+            <section class="section">
+                <div class="papers-grid">
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">Audio-Visual Illusions in VR</div>
+                    </a>
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">Haptic-Visual Integration</div>
+                    </a>
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">Multisensory Embodiment</div>
+                    </a>
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">Spatial Audio Design</div>
+                    </a>
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">Haptic Illusions</div>
+                    </a>
+                    <a href="#" class="paper-link">
+                        <div class="paper-image">AI-Driven Multimodal</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Call for Participation -->
+            <section class="section" id="call">
+                <h2>Call for Participation</h2>
+                <h3>1st International Workshop on Multisensory Interactions in Extended Reality (MIX) at ISMAR 2025 in Daejeon, South Korea on October 8th, 2025</h3>
+                
+                <p>Researchers, practitioners, artists, and students in XR, join us for the one-day, in-person workshop on Multisensory Interactions in Extended Reality (MIX) in Daejeon, South Korea. MIX addresses the critical challenge of integrating visual, auditory, and haptic modalities for coherent, immersive XR with a focus on crossmodal congruence and embodied human-AI interaction. Our workshop offers a unique interdisciplinary platform, bridging HCI, engineering, cognitive psychology, and art to explore solutions beyond single-modality approaches.</p>
+
+                <p>The workshop will feature an inspiring keynote by Prof. Laurie Heller (Carnegie Mellon University), paper presentations sharing novel research and ideas, and practical hands-on tutorials on designing audio and haptic interactions in XR. The workshop will culminate in a collaborative 'Designing with Senses' group work session where participants apply learned concepts. Attendees will learn state-of-the-art techniques, gain practical skills via the hands-on tutorials, exchange interdisciplinary ideas, collaborate on design challenges, and help shape the future research agenda for multisensory XR.</p>
+
+                <p>To submit a paper, please use this form to upload your submission by <strong>June 27, 2025, AoE</strong>. Selection prioritizes relevance to the workshop themes, aiming for a diverse, interdisciplinary mix of topics. Note that per ISMAR 2025 policies, workshop participants (including at least one author of each paper) must attend the workshop in Daejeon in person. All accepted authors must register for the full conference.</p>
+
+                <p>We look forward to exploring the future of multisensory XR with you in Daejeon, South Korea!</p>
+            </section>
+
+            <!-- Submissions -->
+            <section class="section" id="submissions">
+                <h2>Submissions</h2>
+                <p>We welcome paper submissions of 2-4 pages, excluding references. All submissions must be in English. Paper quality versus length will be assessed according to a contribution-per-page judgment. All submissions will be accepted or rejected as workshop papers. Accepted papers will be published in the ISMAR 2025 adjunct proceedings and archived on IEEE Xplore. Papers must be formatted using the IEEE Computer Society VGTC template and will be subject to the registration and publication processing policy of ISMAR 2025.</p>
+
+                <p>We are interested in a range of contribution types from small empirical studies of multisensory systems to technical, theoretical, or artistic explorations of the topic. The focus of the work can also be on unimodal sensory feedback (e.g., only audio or only haptic feedback). However, in this case, the paper must include a discussion on how the unisensory feedback would be integrated into a multisensory context. Submissions focusing on multisensory interactions in specific application fields, e.g., medical, automotive, industrial, or education, are furthermore welcome.</p>
+
+                <h3>Topics of Interest:</h3>
+                <ul class="topics-list">
+                    <li>Multisensory interactions in XR (e.g., audio-visual / audio-haptic / visuo-haptic)</li>
+                    <li>Multisensory perception in XR</li>
+                    <li>Multisensory congruence</li>
+                    <li>Sonic Interaction Design</li>
+                    <li>Novel sound or haptic interaction techniques in XR</li>
+                    <li>Multimodal embodied human-AI interaction</li>
+                    <li>Multimodal AI agents in XR</li>
+                    <li>Evaluations of multisensory systems</li>
+                    <li>Art projects/installations of multisensory experiences</li>
+                    <li>Position papers on the topic</li>
+                    <li>Multisensory interactions in specific application fields</li>
+                </ul>
+            </section>
+
+            <!-- Agenda -->
+            <section class="section" id="agenda">
+                <h2>Agenda</h2>
+                <table class="agenda-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Agenda</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00 - 09:15</td>
+                            <td>Welcome</td>
+                        </tr>
+                        <tr>
+                            <td>09:15 - 10:00</td>
+                            <td>Keynote on Auditory Perception (Prof. Laurie Heller, Carnegie Mellon University)</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 10:50</td>
+                            <td>Paper Session #1</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>10:50 - 11:10</td>
+                            <td>Coffee Break</td>
+                        </tr>
+                        <tr>
+                            <td>11:10 - 12:00</td>
+                            <td>Paper Session #2</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>12:00 - 13:30</td>
+                            <td>Lunch Break</td>
+                        </tr>
+                        <tr>
+                            <td>13:30 - 14:00</td>
+                            <td>Tutorial on Audio Design in XR (Laura Schütz, Sasan Matinfar)</td>
+                        </tr>
+                        <tr>
+                            <td>14:00 - 14:30</td>
+                            <td>Tutorial on Haptic Design in XR (Yannick Weiss, Matthias Hoppe)</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>14:30 - 14:50</td>
+                            <td>Coffee Break</td>
+                        </tr>
+                        <tr>
+                            <td>14:50 - 16:50</td>
+                            <td>Workshop - Designing with Senses (Carlos García Fernández)</td>
+                        </tr>
+                        <tr>
+                            <td>16:50 - 17:00</td>
+                            <td>Wrap-Up and Goodbye</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Organizers -->
+            <section class="section" id="organizers">
+                <h2>Organizers</h2>
+                <div class="organizers-grid">
+                    <div class="organizer-card">
+                        <a href="https://lauraschuetz.github.io" class="organizer-link">
+                            <div class="organizer-image">LS</div>
+                            <div class="organizer-name">Laura Schütz</div>
+                            <div class="organizer-affiliation">Technical University of Munich</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://www.cs.cit.tum.de/en/camp/members/sasan-matinfar-1/" class="organizer-link">
+                            <div class="organizer-image">SM</div>
+                            <div class="organizer-name">Sasan Matinfar</div>
+                            <div class="organizer-affiliation">Technical University of Munich</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://www.cs.cit.tum.de/en/camp/members/cv-nassir-navab/nassir-navab/" class="organizer-link">
+                            <div class="organizer-image">NN</div>
+                            <div class="organizer-name">Prof. Nassir Navab</div>
+                            <div class="organizer-affiliation">Technical University of Munich</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://www.contakt-lab.space" class="organizer-link">
+                            <div class="organizer-image">MF</div>
+                            <div class="organizer-name">Prof. Merle Fairhurst</div>
+                            <div class="organizer-affiliation">TU Dresden</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://www.yannick-weiss.com" class="organizer-link">
+                            <div class="organizer-image">YW</div>
+                            <div class="organizer-name">Yannick Weiss</div>
+                            <div class="organizer-affiliation">LMU Munich</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://scholar.google.de/citations?user=N2Bw-lMAAAAJ" class="organizer-link">
+                            <div class="organizer-image">MH</div>
+                            <div class="organizer-name">Dr. Matthias Hoppe</div>
+                            <div class="organizer-affiliation">Keio University, Yokohama, Japan</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://carlos-gf.com" class="organizer-link">
+                            <div class="organizer-image">CG</div>
+                            <div class="organizer-name">Carlos García Fernández</div>
+                            <div class="organizer-affiliation">Keio University, Yokohama, Japan</div>
+                        </a>
+                    </div>
+                    <div class="organizer-card">
+                        <a href="https://www.mjhci.com" class="organizer-link">
+                            <div class="organizer-image">MK</div>
+                            <div class="organizer-name">Dr. Myung Jin (MJ) Kim</div>
+                            <div class="organizer-affiliation">Electronics and Telecommunications Research Institute (ETRI)</div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
