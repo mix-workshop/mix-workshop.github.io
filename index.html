@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIX Workshop - Multisensory Interactions in Extended Reality</title>
+    <title>MIX Workshop</title>
     <style>
         * {
             margin: 0;
@@ -299,8 +299,8 @@
         }
 
         .organizer-image {
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
             background: #f5f5f5;
             border: 1px solid #ddd;
             margin: 0 auto 1rem;
@@ -309,7 +309,7 @@
             justify-content: center;
             color: #666;
             font-weight: 600;
-            border-radius: 8p;
+            border-radius: 8px;
             overflow: hidden;
         }
 
@@ -317,7 +317,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8p;
+            border-radius: 8px;
         }
 
         .organizer-name {
@@ -332,6 +332,39 @@
             font-size: 0.85rem;
             font-weight: 400;
             line-height: 1.4;
+        }
+
+        /* Deadlines styling */
+        .deadlines {
+            background: #f8f9fa;
+            border-left: 4px solid #333;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .deadlines h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .deadlines ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deadlines li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .deadlines li:last-child {
+            border-bottom: none;
+        }
+
+        .deadline-date {
+            font-weight: 600;
+            color: #495057;
         }
 
         /* Responsive */
@@ -410,7 +443,7 @@
 
     <div class="hero">
         <div class="container">
-            <h1>MIX Workshop</h1>
+            <h1>MIX - Multisensory Interactions in XR</h1>
             <p class="subtitle">1st International Workshop on Multisensory Interactions in Extended Reality</p>
             <p class="location">ISMAR 2025 • Daejeon, South Korea • October 8th, 2025</p>
             <a href="#" class="submit-btn">Submit Now</a>
@@ -422,23 +455,29 @@
             <!-- Featured Papers Section -->
             <section class="section">
                 <div class="papers-grid">
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">Audio-Visual Illusions in VR</div>
+                    <a href="https://doi.org/10.1109/TVCG.2024.3456163" class="paper-link" target="_blank">
+                        <div class="paper-image">Audiovisual Interactions</div>
                     </a>
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">Haptic-Visual Integration</div>
+                    <a href="https://doi.org/10.1007/978-3-031-43996-4_20" class="paper-link" target="_blank">
+                        <div class="paper-image">Model-based Sonification</div>
                     </a>
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">Multisensory Embodiment</div>
+                    <a href="https://doi.org/10.1145/3290605.3300776" class="paper-link" target="_blank">
+                        <div class="paper-image">Audiovisual Congruency</div>
                     </a>
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">Spatial Audio Design</div>
+                    <a href="https://doi.org/10.1145/3544548.3581223" class="paper-link" target="_blank">
+                        <div class="paper-image">Pseudo Haptics</div>
                     </a>
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">Haptic Illusions</div>
+                    <a href="https://carlos-gf.com/atmospheric-spaces-1" class="paper-link" target="_blank">
+                        <div class="paper-image">Embodied Multisensory Experiences</div>
                     </a>
-                    <a href="#" class="paper-link">
-                        <div class="paper-image">AI-Driven Multimodal</div>
+                    <a href="https://doi.org/10.1145/3613904.3642254" class="paper-link" target="_blank">
+                        <div class="paper-image">Visuo-haptic Illusions</div>
+                    </a>
+                    <a href="https://doi.org/10.1145/3491102.3517724" class="paper-link" target="_blank">
+                        <div class="paper-image">Haptic-visual Congruency</div>
+                    </a>
+                    <a href="https://doi.org/10.1007/s10055-024-01056-2" class="paper-link" target="_blank">
+                        <div class="paper-image">Multisensory Affective Touch</div>
                     </a>
                 </div>
             </section>
@@ -450,16 +489,26 @@
                 
                 <p>Researchers, practitioners, artists, and students in XR, join us for the one-day, in-person workshop on Multisensory Interactions in Extended Reality (MIX) in Daejeon, South Korea. MIX addresses the critical challenge of integrating visual, auditory, and haptic modalities for coherent, immersive XR with a focus on crossmodal congruence and embodied human-AI interaction. Our workshop offers a unique interdisciplinary platform, bridging HCI, engineering, cognitive psychology, and art to explore solutions beyond single-modality approaches.</p>
 
-                <p>The workshop will feature an inspiring keynote by Prof. Laurie Heller (Carnegie Mellon University), paper presentations sharing novel research and ideas, and practical hands-on tutorials on designing audio and haptic interactions in XR. The workshop will culminate in a collaborative 'Designing with Senses' group work session where participants apply learned concepts. Attendees will learn state-of-the-art techniques, gain practical skills via the hands-on tutorials, exchange interdisciplinary ideas, collaborate on design challenges, and help shape the future research agenda for multisensory XR.</p>
+                <p>The workshop will feature an inspiring keynote, paper presentations sharing novel research and ideas, and practical hands-on tutorials on designing audio and haptic interactions in XR. The workshop will culminate in a collaborative 'Designing with Senses' session. Attendees will learn state-of-the-art techniques, gain practical skills via the hands-on tutorials, exchange interdisciplinary ideas, collaborate on design challenges, and help shape the future research agenda for multisensory XR.</p>
 
-                <p>To submit a paper, please use this form to upload your submission by <strong>June 27, 2025, AoE</strong>. Selection prioritizes relevance to the workshop themes, aiming for a diverse, interdisciplinary mix of topics. Note that per ISMAR 2025 policies, workshop participants (including at least one author of each paper) must attend the workshop in Daejeon in person. All accepted authors must register for the full conference.</p>
+                <p>To submit a paper, please use this form to upload your submission by <strong>July 13, 2025, AoE</strong>. Selection prioritizes relevance to the workshop themes, aiming for a diverse, interdisciplinary mix of topics. Note that per ISMAR 2025 policies, workshop participants (including at least one author of each paper) must attend the workshop in Daejeon in person. All accepted authors must register for the full conference.</p>
 
-                <p>We look forward to exploring the future of multisensory XR with you in Daejeon, South Korea!</p>
+                <p>We look forward to exploring the future of multisensory XR with you at ISMAR 2025 in South Korea!</p>
             </section>
 
             <!-- Submissions -->
             <section class="section" id="submissions">
                 <h2>Submissions</h2>
+                
+                <div class="deadlines">
+                    <h3>Important Dates</h3>
+                    <ul>
+                        <li>Paper submission deadline: <span class="deadline-date">July 13th, 2025 (Sunday) AoE</span></li>
+                        <li>Acceptance notification: <span class="deadline-date">August 1st, 2025 (Friday) AoE</span></li>
+                        <li>Camera-ready materials: <span class="deadline-date">August 15th, 2025 (Friday) AoE</span></li>
+                    </ul>
+                </div>
+
                 <p>We welcome paper submissions of 2-4 pages, excluding references. All submissions must be in English. Paper quality versus length will be assessed according to a contribution-per-page judgment. All submissions will be accepted or rejected as workshop papers. Accepted papers will be published in the ISMAR 2025 adjunct proceedings and archived on IEEE Xplore. Papers must be formatted using the IEEE Computer Society VGTC template and will be subject to the registration and publication processing policy of ISMAR 2025.</p>
 
                 <p>We are interested in a range of contribution types from small empirical studies of multisensory systems to technical, theoretical, or artistic explorations of the topic. The focus of the work can also be on unimodal sensory feedback (e.g., only audio or only haptic feedback). However, in this case, the paper must include a discussion on how the unisensory feedback would be integrated into a multisensory context. Submissions focusing on multisensory interactions in specific application fields, e.g., medical, automotive, industrial, or education, are furthermore welcome.</p>
@@ -544,7 +593,7 @@
                 <h2>Organizers</h2>
                 <div class="organizers-grid">
                     <div class="organizer-card">
-                        <a href="https://lauraschuetz.github.io" class="organizer-link">
+                        <a href="https://lauraschuetz.github.io" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/laura.jpg" alt="Laura Schütz" onerror="this.parentNode.innerHTML='LS'">
                             </div>
@@ -553,7 +602,7 @@
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://www.cs.cit.tum.de/en/camp/members/sasan-matinfar-1/" class="organizer-link">
+                        <a href="https://www.cs.cit.tum.de/en/camp/members/sasan-matinfar-1/" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/sasan.jpeg" alt="Sasan Matinfar" onerror="this.parentNode.innerHTML='SM'">
                             </div>
@@ -562,7 +611,7 @@
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://www.cs.cit.tum.de/en/camp/members/cv-nassir-navab/nassir-navab/" class="organizer-link">
+                        <a href="https://www.cs.cit.tum.de/en/camp/members/cv-nassir-navab/nassir-navab/" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/nassir.jpg" alt="Prof. Nassir Navab" onerror="this.parentNode.innerHTML='NN'">
                             </div>
@@ -571,7 +620,7 @@
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://www.contakt-lab.space" class="organizer-link">
+                        <a href="https://tu-dresden.de/ing/elektrotechnik/ias/socialtouch/professur/inhaber-in" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/merle.jpg" alt="Prof. Merle Fairhurst" onerror="this.parentNode.innerHTML='MF'">
                             </div>
@@ -580,7 +629,7 @@
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://www.yannick-weiss.com" class="organizer-link">
+                        <a href="https://www.yannick-weiss.com" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/yannick.jpg" alt="Yannick Weiss" onerror="this.parentNode.innerHTML='YW'">
                             </div>
@@ -589,30 +638,30 @@
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://scholar.google.de/citations?user=N2Bw-lMAAAAJ" class="organizer-link">
+                        <a href="https://scholar.google.de/citations?user=N2Bw-lMAAAAJ" class="organizer-link" target="_blank">
                             <div class="organizer-image">
-                                <img src="pictures/matthias.jpg" alt="Dr. Matthias Hoppe" onerror="this.parentNode.innerHTML='MH'">
+                                <img src="pictures/matthias.jpeg" alt="Dr. Matthias Hoppe" onerror="this.parentNode.innerHTML='MH'">
                             </div>
                             <div class="organizer-name">Dr. Matthias Hoppe</div>
-                            <div class="organizer-affiliation">Keio University, Yokohama, Japan</div>
+                            <div class="organizer-affiliation">Keio University</div>
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://carlos-gf.com" class="organizer-link">
+                        <a href="https://carlos-gf.com" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/carlos.jpeg" alt="Carlos García Fernández" onerror="this.parentNode.innerHTML='CG'">
                             </div>
                             <div class="organizer-name">Carlos García Fernández</div>
-                            <div class="organizer-affiliation">Keio University, Yokohama, Japan</div>
+                            <div class="organizer-affiliation">Keio University</div>
                         </a>
                     </div>
                     <div class="organizer-card">
-                        <a href="https://www.mjhci.com" class="organizer-link">
+                        <a href="https://www.mjhci.com" class="organizer-link" target="_blank">
                             <div class="organizer-image">
                                 <img src="pictures/mj.jpg" alt="Dr. Myung Jin (MJ) Kim" onerror="this.parentNode.innerHTML='MK'">
                             </div>
                             <div class="organizer-name">Dr. Myung Jin (MJ) Kim</div>
-                            <div class="organizer-affiliation">Electronics and Telecommunications Research Institute (ETRI)</div>
+                            <div class="organizer-affiliation">ETRI</div>
                         </a>
                     </div>
                 </div>
