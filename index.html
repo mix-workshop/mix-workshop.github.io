@@ -427,6 +427,55 @@
             .logo-image:hover {
                 opacity: 1;
             }
+            
+            .sponsor-section {
+                padding: 2rem 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: 2px solid #eee;
+            }
+
+            .sponsor-section h2 {
+                font-size: 1.2rem;
+                margin-bottom: 0.0rem; /* Reduced from 1rem */
+                color: #333;
+                font-weight: 400;
+                text-align: center; /* Left-aligned heading */
+            }
+
+            .sponsor-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .sponsor-logo {
+                height: 160px;
+                width: auto;
+                object-fit: contain;
+                opacity: 0.8;
+                transition: opacity 0.3s ease;
+            }
+
+            .sponsor-logo:hover {
+                opacity: 1;
+            }
+
+            .sponsor-container a {
+                display: inline-block;
+                transition: transform 0.3s ease;
+            }
+
+            .sponsor-container a:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Responsive adjustments for sponsor */
+            @media (max-width: 768px) {
+                .sponsor-logo {
+                    height: 120px;
+                }
+            }
 
             /* Responsive adjustments for logos */
             @media (max-width: 768px) {
@@ -840,6 +889,18 @@
                         <img src="logos/lmu.png" alt="LMU Munich" class="logo-image">
                         <img src="logos/keio.png" alt="Keio University" class="logo-image">
                         <img src="logos/etri.png" alt="ETRI" class="logo-image">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sponsor -->
+            <section class="sponsor-section">
+                <div class="container">
+                    <h2>Sponsor</h2>
+                    <div class="sponsor-container">
+                        <a href="https://mcml.ai/" target="_blank">
+                            <img src="logos/mcml.png" alt="MCML Sponsor" class="sponsor-logo">
+                        </a>
                     </div>
                 </div>
             </section>
